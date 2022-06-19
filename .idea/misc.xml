@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Panchayatapp/app/src/main/res/drawable-hdpi/no_btn_bg.xml" value="0.1125" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/drawable-hdpi/round_edge_edittext.xml" value="0.1125" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/drawable/ic_file.xml" value="0.1125" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/activity_admin_home.xml" value="0.16032608695652173" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/activity_admin_login.xml" value="0.16032608695652173" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/activity_dash_board.xml" value="0.16032608695652173" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/activity_main.xml" value="0.16032608695652173" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/activity_user_dash_board.xml" value="0.18297101449275363" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/activity_user_home_page.xml" value="0.18297101449275363" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/activity_user_registration.xml" value="0.1" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/addlink.xml" value="0.15729166666666666" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/addproject.xml" value="0.18297101449275363" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/applicationform.xml" value="0.18297101449275363" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/frgetpwd.xml" value="0.18297101449275363" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/logout_alert.xml" value="0.19435396308360478" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/panchayatinfo.xml" value="0.14427083333333332" />
+        <entry key="..\:/Panchayatapp/app/src/main/res/layout/projectitem.xml" value="0.18297101449275363" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

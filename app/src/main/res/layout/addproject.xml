@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/round_edge_edittext">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Project"
+        android:id="@+id/confirmtext"
+
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/proxima_nova_bold"/>
+    <EditText
+        android:id="@+id/edt_panchaytName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/purple_700"
+        android:textColorHint="@color/purple_500"
+        android:textColor="@color/textColor"
+        android:editable="false"
+        android:hint="Panchayat Name" />
+    <EditText
+        android:id="@+id/edt_pname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/purple_700"
+        android:textColorHint="@color/purple_500"
+        android:textColor="@color/textColor"
+        android:hint="Project Name" />
+    <EditText
+        android:id="@+id/edt_pdesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/purple_700"
+        android:textColorHint="@color/purple_500"
+        android:textColor="@color/textColor"
+        android:hint="Project Description" />
+    <EditText
+        android:id="@+id/edt_pduration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:inputType="number"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/purple_700"
+        android:textColorHint="@color/purple_500"
+        android:textColor="@color/textColor"
+        android:imeOptions="actionDone"
+        android:hint="Project Duration in Months" />
+
+    <EditText
+        android:id="@+id/edt_pdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"
+        android:editable="false"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/purple_700"
+        android:textColorHint="@color/purple_500"
+        android:textColor="@color/textColor"
+        android:hint="Project Date" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/pbtn_submit"
+        android:text="SUBMIT" />
+
+
+</LinearLayout>
