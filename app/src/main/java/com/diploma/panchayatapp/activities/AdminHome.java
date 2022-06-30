@@ -276,7 +276,7 @@ public class AdminHome extends AppCompatActivity {
     }
 
     private void addProject() {
-        panchayatModelList = eGramDatabase.eGramDao().getPanchayatDetails(constants.getName(AdminHome.this));
+    //    panchayatModelList = eGramDatabase.eGramDao().getPanchayatDetails(constants.getName(AdminHome.this));
         LayoutInflater inflater = LayoutInflater.from(AdminHome.this);
         final View view = inflater.inflate(R.layout.addproject, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(AdminHome.this);
@@ -287,37 +287,13 @@ public class AdminHome extends AppCompatActivity {
         EditText edt_pdesc = view.findViewById(R.id.edt_pdesc);
         EditText edt_pname = view.findViewById(R.id.edt_pname);
         EditText edt_panchaytname = view.findViewById(R.id.edt_panchaytName);
-        TextView txt_url=view.findViewById(R.id.txt_url);
+        EditText edt_link=view.findViewById(R.id.edt_link);
         edt_panchaytname.setText(constants.getName(AdminHome.this));
         builder.setCancelable(true);
         final AlertDialog alert = builder.create();
         alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alert.show();
-           if (!panchayatModelList.get(0).getUrl().equals("")) {
-            SpannableString content = new SpannableString("Link: " + panchayatModelList.get(0).getUrl());
-            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-            txt_url.setTextColor(getColor(R.color.link));
-            txt_url.setText(content);
-        } else {
-            txt_url.setText("Link: " + "N/A");
-               txt_url.setTextColor(getColor(R.color.textColor));
 
-           }
-
-        txt_url.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!panchayatModelList.get(0).getUrl().equals("")) {
-                    if (constants.isNetworkAvilable(AdminHome.this)) {
-                        alert.dismiss();
-                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(panchayatModelList.get(0).getUrl()));
-                        startActivity(browserIntent);
-                    } else {
-                        Toast.makeText(AdminHome.this, "No network available", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
         edt_pdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -382,6 +358,19 @@ public class AdminHome extends AppCompatActivity {
                 projectModel.setDuration(Integer.parseInt(edt_pduration.getText().toString()));
                 projectModel.setStartDate(edt_pdate.getText().toString());
                 projectModel.setPanchayatName(edt_panchaytname.getText().toString());
+                if(!edt_link.getText().toString().equals("")){
+                    if(URLUtil.isValidUrl(edt_link.getText().toString())){
+                        projectModel.setLink(edt_link.getText().toString());
+                    }else {
+                        Toast.makeText(AdminHome.this, "Enter valid link address", Toast.LENGTH_SHORT).show();
+                    }
+
+                }else
+                {
+                    projectModel.setLink("");
+                }
+
+
                 eGramDatabase.eGramDao().insertProject(projectModel);
                 showList();
                 Toast.makeText(AdminHome.this, "Successfully added the project", Toast.LENGTH_SHORT).show();

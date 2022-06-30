@@ -112,9 +112,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
+            android:visibility="gone"
             android:layout_marginTop="5dp"
             android:textColor="@color/black"
-            android:visibility="gone"
             android:fontFamily="@font/proxima_nova_semibold"
             android:id="@+id/txt_url"/>
 

@@ -17,6 +17,15 @@ public class ProjectModel {
     public String projectDesc;
     public int duration;
     public String startDate;
+    public String link;
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public String getPanchayatName() {
         return panchayatName;
