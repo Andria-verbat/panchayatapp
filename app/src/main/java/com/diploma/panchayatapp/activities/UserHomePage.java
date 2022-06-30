@@ -148,15 +148,15 @@ public class UserHomePage extends AppCompatActivity {
         txt_assembly.setText("Assembly Constituency: " + panchayatModelList.get(0).getPanchayaAssembly());
         txt_nov.setText("No. of Villages: " + panchayatModelList.get(0).getVillages());
         txt_villagess.setText("Villages: " + panchayatModelList.get(0).getVillageNames());
-        if (!panchayatModelList.get(0).getUrl().equals("")) {
+        /*if (!panchayatModelList.get(0).getUrl().equals("")) {
             SpannableString content = new SpannableString("Link: " + panchayatModelList.get(0).getUrl());
             content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
             txt_url.setText(content);
         } else {
             txt_url.setText("Link: " + "N/A");
-        }
+        }*/
 
-        txt_url.setOnClickListener(new View.OnClickListener() {
+      /*  txt_url.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!panchayatModelList.get(0).getUrl().equals("")) {
@@ -169,7 +169,7 @@ public class UserHomePage extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
 
     }
 

@@ -4,7 +4,7 @@
     <color name="purple_500">#B3B1B1</color>
     <color name="purple_700">#666666</color>
     <color name="textColor">#3A3A3A</color>
-
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="link">#5A70EC</color>
 </resources>

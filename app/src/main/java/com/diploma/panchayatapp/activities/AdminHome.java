@@ -21,6 +21,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +33,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.diploma.panchayatapp.R;
@@ -38,6 +41,7 @@ import com.diploma.panchayatapp.adapter.ProjectAdapter;
 import com.diploma.panchayatapp.databinding.ActivityAdminHomeBinding;
 import com.diploma.panchayatapp.localdb.EGramDatabase;
 import com.diploma.panchayatapp.model.ApplicationModel;
+import com.diploma.panchayatapp.model.PanchayatModel;
 import com.diploma.panchayatapp.model.ProjectModel;
 import com.diploma.panchayatapp.utils.ImageBitmapString;
 import com.diploma.panchayatapp.utils.constants;
@@ -48,6 +52,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AdminHome extends AppCompatActivity {
     ActivityAdminHomeBinding binding;
@@ -60,6 +65,8 @@ public class AdminHome extends AppCompatActivity {
     String imageSource="";
     Bitmap bitmap;
     ImageView profImage;
+    List<PanchayatModel> panchayatModelList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +74,12 @@ public class AdminHome extends AppCompatActivity {
         binding = ActivityAdminHomeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        eGramDatabase = EGramDatabase.getInstance(AdminHome.this);
         projectModel = new ProjectModel();
         applicationModel = new ApplicationModel();
-        eGramDatabase = EGramDatabase.getInstance(AdminHome.this);
+        panchayatModelList = new ArrayList<>();
+
+
         binding.textView.setText(constants.getName(AdminHome.this));
 
         showList();
@@ -266,6 +276,7 @@ public class AdminHome extends AppCompatActivity {
     }
 
     private void addProject() {
+        panchayatModelList = eGramDatabase.eGramDao().getPanchayatDetails(constants.getName(AdminHome.this));
         LayoutInflater inflater = LayoutInflater.from(AdminHome.this);
         final View view = inflater.inflate(R.layout.addproject, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(AdminHome.this);
@@ -276,11 +287,37 @@ public class AdminHome extends AppCompatActivity {
         EditText edt_pdesc = view.findViewById(R.id.edt_pdesc);
         EditText edt_pname = view.findViewById(R.id.edt_pname);
         EditText edt_panchaytname = view.findViewById(R.id.edt_panchaytName);
+        TextView txt_url=view.findViewById(R.id.txt_url);
         edt_panchaytname.setText(constants.getName(AdminHome.this));
         builder.setCancelable(true);
         final AlertDialog alert = builder.create();
         alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alert.show();
+           if (!panchayatModelList.get(0).getUrl().equals("")) {
+            SpannableString content = new SpannableString("Link: " + panchayatModelList.get(0).getUrl());
+            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+            txt_url.setTextColor(getColor(R.color.link));
+            txt_url.setText(content);
+        } else {
+            txt_url.setText("Link: " + "N/A");
+               txt_url.setTextColor(getColor(R.color.textColor));
+
+           }
+
+        txt_url.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!panchayatModelList.get(0).getUrl().equals("")) {
+                    if (constants.isNetworkAvilable(AdminHome.this)) {
+                        alert.dismiss();
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(panchayatModelList.get(0).getUrl()));
+                        startActivity(browserIntent);
+                    } else {
+                        Toast.makeText(AdminHome.this, "No network available", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
         edt_pdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
